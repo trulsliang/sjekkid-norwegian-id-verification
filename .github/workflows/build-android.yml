@@ -42,17 +42,23 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x android/gradlew
       
-    - name: Set JAVA_HOME to JDK 17
-      run: echo "JAVA_HOME=$JAVA_HOME_17_X64" >> $GITHUB_ENV
-      
+    - name: Clear Gradle cache
+      run: |
+        rm -rf ~/.gradle
+        cd android
+        rm -rf .gradle
+        rm -rf build
+        rm -rf app/build
+        
     - name: Build APK
       run: |
+        export JAVA_HOME=$JAVA_HOME_17_X64
+        export PATH=$JAVA_HOME/bin:$PATH
         cd android
         echo "Using Java version:"
         java -version
         echo "JAVA_HOME: $JAVA_HOME"
-        ./gradlew clean
-        ./gradlew assembleDebug --no-daemon --stacktrace --info
+        ./gradlew assembleDebug --no-daemon --stacktrace
       env:
         GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m"
         
