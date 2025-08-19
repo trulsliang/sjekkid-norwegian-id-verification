@@ -1,0 +1,89 @@
+Uncaught (in promise) ReferenceError: window is not defined
+    at qj (background.js:2:995731)
+    at hT (background.js:2:1045608)
+    at bT (background.js:2:1047226)
+    at async kT (background.js:2:1047474)Understand this error
+4background.js:2 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'length')
+    at background.js:2:1118171
+    at async background.js:2:1118064Understand this error
+4serviceWorker.js:1 Uncaught (in promise) Error: Frame with ID 11168 was removed.Understand this error
+6background.js:2 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'length')
+    at background.js:2:1118171
+    at async background.js:2:1118064Understand this error
+_app-d29b3a62783c502e.js:13 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+_app-d29b3a62783c502e.js:13 [LaunchDarkly] LaunchDarkly client initialized
+feature_extension-platform-merchant-homepage-plugin-view.js:1 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'map')
+    at feature_extension-platform-merchant-homepage-plugin-view.js:1:5171Understand this error
+/usage:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+feature_extension-platform-merchant-homepage-plugin-view.js:1 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'checkoutUrls')
+    at background.js:2:1118846Understand this error
+feature_extension-platform-merchant-homepage-plugin-view.js:1 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'map')
+    at feature_extension-platform-merchant-homepage-plugin-view.js:1:5171Understand this error
+feature_extension-platform-merchant-homepage-plugin-view.js:1 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'checkoutUrls')
+    at background.js:2:1118846Understand this error
+/repls:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+feature_extension-platform-merchant-homepage-plugin-view.js:1 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'map')
+    at feature_extension-platform-merchant-homepage-plugin-view.js:1:5171Understand this error
+feature_extension-platform-merchant-homepage-plugin-view.js:1 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'checkoutUrls')
+    at background.js:2:1118846Understand this error
+17Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this error
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'battery'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'layout-animations'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'navigation-override'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'oversized-images'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'publickey-credentials'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'speaker-selection'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'unoptimized-images'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'unsized-media'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Unrecognized feature: 'pointer-lock'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+framework-fb0407fadd1bb955.js:1 Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-fb0407fadd1bb955.js:1Understand this warning
+7QrIdentityVerifier:1 Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was receivedUnderstand this error
+workspace_iframe.html:32 Unrecognized feature: 'ambient-light-sensor'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'battery'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'execution-while-not-rendered'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'execution-while-out-of-viewport'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'layout-animations'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'legacy-image-formats'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'navigation-override'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'oversized-images'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'publickey-credentials'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'speaker-selection'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'unoptimized-images'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'unsized-media'.Understand this warning
+workspace_iframe.html:32 Allow attribute will take precedence over 'allowfullscreen'.Understand this warning
+workspace_iframe.html:32 Allow attribute will take precedence over 'allowpaymentrequest'.Understand this warning
+60870083-58c6-4a24-aaed-05eec333abf4-00-jxfj08y06cr.riker.replit.dev/api/admin/dashboard:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)Understand this error

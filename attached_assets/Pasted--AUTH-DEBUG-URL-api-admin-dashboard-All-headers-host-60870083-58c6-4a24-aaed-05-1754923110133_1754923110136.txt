@@ -1,0 +1,91 @@
+=== AUTH DEBUG ===
+URL: /api/admin/dashboard
+All headers: {
+  "host": "60870083-58c6-4a24-aaed-05eec333abf4-00-jxfj08y06cr.riker.replit.dev",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+  "accept": "*/*",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "nb,sv;q=0.9,en-US;q=0.8,en;q=0.7,no;q=0.6",
+  "authorization": "Bearer yd3kz043zft0p35qe856",
+  "if-none-match": "W/\"116-QDFGqAQOMYaQ9xJK/IF22VDvPEI\"",
+  "referer": "https://60870083-58c6-4a24-aaed-05eec333abf4-00-jxfj08y06cr.riker.replit.dev/admin",
+  "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-storage-access": "active",
+  "x-forwarded-for": "109.247.135.94, 10.81.5.23",
+  "x-forwarded-proto": "https",
+  "x-replit-user-bio": "",
+  "x-replit-user-id": "",
+  "x-replit-user-name": "",
+  "x-replit-user-profile-image": "",
+  "x-replit-user-roles": "",
+  "x-replit-user-teams": "",
+  "x-replit-user-url": ""
+}
+Extracted sessionId: yd3kz043zft0p35qe856
+2:37:57 PM [express] GET /api/admin/dashboard 304 in 350ms :: {"organization":{"id":1,"name":"Test O…
+=== AUTH DEBUG ===
+URL: /api/admin/organizations
+All headers: {
+  "host": "60870083-58c6-4a24-aaed-05eec333abf4-00-jxfj08y06cr.riker.replit.dev",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+  "accept": "*/*",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "nb,sv;q=0.9,en-US;q=0.8,en;q=0.7,no;q=0.6",
+  "authorization": "Bearer yd3kz043zft0p35qe856",
+  "if-none-match": "W/\"b2-x0yIvQH3U06mwmetf9/VVhGUx/Q\"",
+  "referer": "https://60870083-58c6-4a24-aaed-05eec333abf4-00-jxfj08y06cr.riker.replit.dev/scanning",
+  "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-storage-access": "active",
+  "x-forwarded-for": "109.247.135.94, 10.81.5.23",
+  "x-forwarded-proto": "https",
+  "x-replit-user-bio": "",
+  "x-replit-user-id": "",
+  "x-replit-user-name": "",
+  "x-replit-user-profile-image": "",
+  "x-replit-user-roles": "",
+  "x-replit-user-teams": "",
+  "x-replit-user-url": ""
+}
+Extracted sessionId: yd3kz043zft0p35qe856
+2:37:59 PM [express] GET /api/admin/organizations 304 in 228ms :: [{"id":1,"name":"Test Organization…
+=== AUTH DEBUG ===
+URL: /api/verify
+All headers: {
+  "host": "60870083-58c6-4a24-aaed-05eec333abf4-00-jxfj08y06cr.riker.replit.dev",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+  "content-length": "40",
+  "accept": "*/*",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "nb,sv;q=0.9,en-US;q=0.8,en;q=0.7,no;q=0.6",
+  "content-type": "application/json",
+  "origin": "https://60870083-58c6-4a24-aaed-05eec333abf4-00-jxfj08y06cr.riker.replit.dev",
+  "referer": "https://60870083-58c6-4a24-aaed-05eec333abf4-00-jxfj08y06cr.riker.replit.dev/scanning",
+  "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-storage-access": "active",
+  "x-forwarded-for": "109.247.135.94, 10.81.5.23",
+  "x-forwarded-proto": "https",
+  "x-replit-user-bio": "",
+  "x-replit-user-id": "",
+  "x-replit-user-name": "",
+  "x-replit-user-profile-image": "",
+  "x-replit-user-roles": "",
+  "x-replit-user-teams": "",
+  "x-replit-user-url": ""
+}
+Extracted sessionId: undefined
+2:38:01 PM [express] POST /api/verify 401 in 1ms :: {"message":"Authentication required"}

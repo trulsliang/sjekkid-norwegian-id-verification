@@ -1,0 +1,48 @@
+CRITICAL FILES FOR GITHUB APK BUILDING
+=====================================
+
+When uploading to GitHub, make sure ALL these files are included:
+
+## Build Configuration (REQUIRED)
+.github/workflows/build-android.yml - Auto-builds APK
+package.json - Node dependencies
+vite.config.ts - Build settings
+capacitor.config.ts - Android app configuration
+
+## Android Project (REQUIRED)
+android/ - ENTIRE folder with all contents
+android/app/build.gradle
+android/build.gradle
+android/settings.gradle
+android/variables.gradle
+android/capacitor.settings.gradle
+
+## Source Code
+client/ - React frontend
+server/ - Express backend
+shared/ - Database schemas
+components.json - UI components
+tailwind.config.ts - Styling
+postcss.config.js - CSS processing
+tsconfig.json - TypeScript config
+
+## Documentation
+replit.md - Project overview
+build-android-apk.md - Build instructions
+quick-apk-build.md - Quick guide
+android-deployment-guide.md - Deployment info
+
+## Configuration
+.gitignore - Ignore unnecessary files
+drizzle.config.ts - Database config
+
+## DO NOT INCLUDE
+node_modules/ - Will be installed automatically
+dist/ - Will be built automatically
+.env files - Contains secrets
+*.log files - Temporary logs
+.git/ - Git history (will be recreated)
+
+TOTAL FILES: ~200+ files including the android/ directory
+
+The android/ folder alone contains ~50+ files needed for APK compilation.
