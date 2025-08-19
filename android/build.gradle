@@ -22,14 +22,25 @@ allprojects {
         google()
         mavenCentral()
     }
-    
-    // Force Java 17 compatibility for all modules including capacitor-android
-    afterEvaluate {
-        tasks.withType(JavaCompile).configureEach {
+}
+
+// Apply Java 17 to all subprojects after evaluation
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android.compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_17
+                targetCompatibility = JavaVersion.VERSION_17
+            }
+        }
+        
+        // Also apply to all JavaCompile tasks
+        project.tasks.withType(JavaCompile).configureEach {
             sourceCompatibility = JavaVersion.VERSION_17
             targetCompatibility = JavaVersion.VERSION_17
         }
     }
+}
 }
 
 task clean(type: Delete) {
