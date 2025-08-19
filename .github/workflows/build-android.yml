@@ -43,7 +43,9 @@ jobs:
       run: |
         # Fix Capacitor's hardcoded Java 21 to Java 17
         sed -i 's/JavaVersion.VERSION_21/JavaVersion.VERSION_17/g' node_modules/@capacitor/android/capacitor/build.gradle
-        echo "Patched Capacitor build.gradle to use Java 17"
+        # Fix Cordova plugins Java 21 to Java 17
+        sed -i 's/JavaVersion.VERSION_21/JavaVersion.VERSION_17/g' android/capacitor-cordova-android-plugins/build.gradle
+        echo "Patched both Capacitor and Cordova plugins to use Java 17"
       
     - name: Make gradlew executable
       run: chmod +x android/gradlew
