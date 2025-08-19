@@ -42,24 +42,17 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x android/gradlew
       
-    - name: Clear Gradle cache
+    - name: Build APK with toolchain override
       run: |
-        rm -rf ~/.gradle
         cd android
-        rm -rf .gradle
-        rm -rf build
-        rm -rf app/build
-        
-    - name: Build APK
-      run: |
-        export JAVA_HOME=$JAVA_HOME_17_X64
-        export PATH=$JAVA_HOME/bin:$PATH
-        cd android
-        echo "Using Java version:"
-        java -version
-        echo "JAVA_HOME: $JAVA_HOME"
-        ./gradlew assembleDebug --no-daemon --stacktrace
+        # Override Java version detection
+        ./gradlew assembleDebug \
+          -Dorg.gradle.java.home=$JAVA_HOME \
+          -Porg.gradle.java.installations.auto-detect=false \
+          --no-daemon \
+          --stacktrace
       env:
+        JAVA_HOME: ${{ env.JAVA_HOME_17_X64 }}
         GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m"
         
     - name: Upload APK
