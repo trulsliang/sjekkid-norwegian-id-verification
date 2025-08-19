@@ -39,6 +39,12 @@ jobs:
     - name: Copy to Android
       run: npx cap copy android
       
+    - name: Patch Capacitor Java version
+      run: |
+        # Fix Capacitor's hardcoded Java 21 to Java 17
+        sed -i 's/JavaVersion.VERSION_21/JavaVersion.VERSION_17/g' node_modules/@capacitor/android/capacitor/build.gradle
+        echo "Patched Capacitor build.gradle to use Java 17"
+      
     - name: Make gradlew executable
       run: chmod +x android/gradlew
       
