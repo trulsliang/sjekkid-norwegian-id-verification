@@ -3,6 +3,12 @@ apply plugin: 'com.android.application'
 android {
     namespace "no.tl.sjekkid"
     compileSdk rootProject.ext.compileSdkVersion
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
     defaultConfig {
         applicationId "no.tl.sjekkid"
         minSdkVersion rootProject.ext.minSdkVersion
