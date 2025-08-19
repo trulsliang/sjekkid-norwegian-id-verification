@@ -42,12 +42,16 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x android/gradlew
       
+    - name: Set JAVA_HOME to JDK 17
+      run: echo "JAVA_HOME=$JAVA_HOME_17_X64" >> $GITHUB_ENV
+      
     - name: Build APK
       run: |
         cd android
+        echo "Using Java version:"
+        java -version
+        echo "JAVA_HOME: $JAVA_HOME"
         ./gradlew assembleDebug --no-daemon --stacktrace
-      env:
-        JAVA_HOME: ${{ env.JAVA_HOME_17_X64 }}
         
     - name: Upload APK
       uses: actions/upload-artifact@v4
