@@ -49,15 +49,24 @@ export async function apiRequest(
     headers.Authorization = `Bearer ${sessionId}`;
   }
 
-  const res = await fetch(createApiUrl(url), {
-    method,
-    headers,
-    body: data ? JSON.stringify(data) : undefined,
-    credentials: "include",
-  });
+  const fullUrl = createApiUrl(url);
+  console.log(`API Request: ${method} ${fullUrl}`, { headers: Object.keys(headers), hasData: !!data });
 
-  await throwIfResNotOk(res);
-  return res;
+  try {
+    const res = await fetch(fullUrl, {
+      method,
+      headers,
+      body: data ? JSON.stringify(data) : undefined,
+      credentials: "include",
+    });
+
+    console.log(`API Response: ${res.status} ${res.statusText}`, { url: fullUrl });
+    await throwIfResNotOk(res);
+    return res;
+  } catch (error) {
+    console.error(`API Error for ${method} ${fullUrl}:`, error);
+    throw error;
+  }
 }
 
 type UnauthorizedBehavior = "returnNull" | "throw";
