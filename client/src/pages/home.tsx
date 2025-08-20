@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { createApiUrl } from "@/config/api";
 import { QRScanner } from "@/components/qr-scanner";
 import { VerificationResultComponent } from "@/components/verification-result";
 import { ErrorDisplay } from "@/components/error-display";
@@ -28,7 +29,7 @@ export default function Home() {
 
   const verifyQRMutation = useMutation({
     mutationFn: async (sessionId: string) => {
-      const response = await fetch("/api/verify-demo", {
+      const response = await fetch(createApiUrl("/api/verify-demo"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

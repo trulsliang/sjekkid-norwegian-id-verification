@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
+import { createApiUrl } from "@/config/api";
 import { QRScanner } from "@/components/qr-scanner";
 import { VerificationResultComponent } from "@/components/verification-result";
 import { LoadingState } from "@/components/loading-state";
@@ -120,7 +121,7 @@ export default function Scanning() {
       
       console.log('Demo session check:', isDemoSession, 'for sessionId:', qrSessionId);
       
-      const response = await fetch(endpoint, {
+      const response = await fetch(createApiUrl(endpoint), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
