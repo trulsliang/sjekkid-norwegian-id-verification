@@ -99,7 +99,11 @@ Role-based interface: Different navigation and content based on user type (admin
 - **Demo Button Removal**: Completely removed demo button from scanning page for production deployment
 - **Android APK Preparation**: Configured Capacitor for Android APK generation with proper app ID (no.tl.sjekkid), camera permissions, and HTTPS support
 - **Build Environment Setup**: Created Android project structure, GitHub Actions workflow for automated APK building, and comprehensive build instructions
+- **Java Compatibility Fixed**: Resolved "invalid source release: 21" errors by enforcing Java 17 globally across all Android modules including Capacitor libraries
+- **APK Build Progress**: GitHub Actions workflow now successfully compiles Android project with proper Java version configuration
 - **Full Platform Operational**: Norwegian identity verification platform now fully functional with working demo and authenticated scanning, proper error handling, and seamless user experience
+- **Authentication Runtime Fix**: Completely resolved JSON parsing errors with automatic session validation, safe response parsing, and instant invalid session cleanup for seamless mobile deployment
+- **Mobile APK Connectivity Complete Fix**: Resolved persistent "failed to fetch" errors in mobile APK by implementing enhanced mobile detection with multiple fallback methods, comprehensive environment variable handling, early mobile configuration setup, and extensive debug logging for troubleshooting APK connectivity issues
 
 ### Organization Admin Role Implementation (January 2025)
 - Added `org_admin` role to database schema and user type system
