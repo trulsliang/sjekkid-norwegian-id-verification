@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
+import { createApiUrl } from "@/config/api";
 import type { LoginRequest, AdminUser } from "@shared/schema";
 
 interface AdminAuthState {
@@ -29,7 +30,7 @@ export function useAdminAuth() {
       try {
         const user = JSON.parse(userData);
         // Test if the session is still valid by making a quick API call
-        fetch('/api/admin/dashboard', {
+        fetch(createApiUrl('/api/admin/dashboard'), {
           headers: {
             'Authorization': `Bearer ${sessionId}`,
             'Content-Type': 'application/json'
