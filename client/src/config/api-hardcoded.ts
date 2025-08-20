@@ -4,7 +4,7 @@
 // Since Vite isn't properly including environment variables, we'll use a different approach
 const MOBILE_API_CONFIG = {
   // This will be replaced during GitHub Actions build
-  DEFAULT_API_URL: 'REPLACE_WITH_DEPLOYED_URL',
+  DEFAULT_API_URL: 'https://sto-identifier-trulsliang.replit.app',
   // For local testing - use the actual environment variable if available
   LOCAL_API_URL: 'https://sto-identifier-trulsliang.replit.app'
 };
