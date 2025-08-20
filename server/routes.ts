@@ -176,6 +176,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
     
     const session = getAdminSession(sessionId);
+    
     if (!session) {
       return res.status(401).json({ message: "Invalid or expired session" });
     }
