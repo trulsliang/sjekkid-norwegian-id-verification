@@ -2,8 +2,32 @@ import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
-    const text = (await res.text()) || res.statusText;
-    throw new Error(`${res.status}: ${text}`);
+    // Clear invalid session on 401
+    if (res.status === 401) {
+      localStorage.removeItem('adminSessionId');
+      localStorage.removeItem('adminUser');
+    }
+    
+    let errorMessage = res.statusText;
+    try {
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const json = await res.json();
+        errorMessage = json.message || json.error || errorMessage;
+      } else {
+        const text = await res.text();
+        // If it's HTML, extract a meaningful error message
+        if (text.includes('<!DOCTYPE')) {
+          errorMessage = `Server error (${res.status})`;
+        } else {
+          errorMessage = text || errorMessage;
+        }
+      }
+    } catch {
+      // Fallback if response parsing fails
+      errorMessage = `HTTP ${res.status}`;
+    }
+    throw new Error(`${res.status}: ${errorMessage}`);
   }
 }
 
@@ -56,12 +80,31 @@ export const getQueryFn: <T>(options: {
       headers,
     });
 
-    if (unauthorizedBehavior === "returnNull" && res.status === 401) {
-      return null;
+    if (res.status === 401) {
+      // Clear invalid session on 401
+      localStorage.removeItem('adminSessionId');
+      localStorage.removeItem('adminUser');
+      
+      if (unauthorizedBehavior === "returnNull") {
+        return null;
+      }
     }
 
     await throwIfResNotOk(res);
-    return await res.json();
+    
+    // Safe JSON parsing - handle non-JSON responses
+    try {
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        return await res.json();
+      } else {
+        // Return empty object for non-JSON responses
+        return {};
+      }
+    } catch (error) {
+      console.error('JSON parsing error:', error);
+      return {};
+    }
   };
 
 export const queryClient = new QueryClient({

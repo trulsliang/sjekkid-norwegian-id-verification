@@ -12,7 +12,7 @@ import { loginRequestSchema, type LoginRequest } from "@shared/schema";
 
 export default function AdminLogin() {
   const [, setLocation] = useLocation();
-  const { login, isLoggingIn, loginError, isAuthenticated } = useAdminAuth();
+  const { login, isLoggingIn, loginError, isAuthenticated, clearSession } = useAdminAuth();
 
   const form = useForm<LoginRequest>({
     resolver: zodResolver(loginRequestSchema),
@@ -92,23 +92,35 @@ export default function AdminLogin() {
                 </div>
               )}
 
-              <Button 
-                type="submit" 
-                className="w-full bg-primary hover:bg-primary-dark text-white py-3"
-                disabled={isLoggingIn}
-              >
-                {isLoggingIn ? (
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Logger inn...</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center space-x-2">
-                    <LogIn className="h-4 w-4" />
-                    <span>Logg inn</span>
-                  </div>
-                )}
-              </Button>
+              <div className="space-y-2">
+                <Button 
+                  type="submit" 
+                  className="w-full bg-primary hover:bg-primary-dark text-white py-3"
+                  disabled={isLoggingIn}
+                >
+                  {isLoggingIn ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Logger inn...</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center space-x-2">
+                      <LogIn className="h-4 w-4" />
+                      <span>Logg inn</span>
+                    </div>
+                  )}
+                </Button>
+                
+                <Button 
+                  type="button"
+                  variant="outline"
+                  className="w-full text-sm"
+                  onClick={clearSession}
+                  disabled={isLoggingIn}
+                >
+                  Tøm cache og prøv igjen
+                </Button>
+              </div>
             </form>
           </Form>
         </CardContent>

@@ -28,11 +28,29 @@ export function useAdminAuth() {
     if (sessionId && userData) {
       try {
         const user = JSON.parse(userData);
-        setState(prev => ({
-          ...prev,
-          user,
-          isAuthenticated: true,
-        }));
+        // Test if the session is still valid by making a quick API call
+        fetch('/api/admin/dashboard', {
+          headers: {
+            'Authorization': `Bearer ${sessionId}`,
+            'Content-Type': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            setState(prev => ({
+              ...prev,
+              user,
+              isAuthenticated: true,
+            }));
+          } else {
+            // Session is invalid, clear it
+            localStorage.removeItem('adminSessionId');
+            localStorage.removeItem('adminUser');
+          }
+        }).catch(() => {
+          // Network error or other issue, clear session
+          localStorage.removeItem('adminSessionId');
+          localStorage.removeItem('adminUser');
+        });
       } catch (error) {
         // Clear invalid data
         localStorage.removeItem('adminSessionId');
@@ -44,7 +62,19 @@ export function useAdminAuth() {
   const loginMutation = useMutation({
     mutationFn: async (credentials: LoginRequest) => {
       const response = await apiRequest("POST", "/api/admin/login", credentials);
-      return await response.json();
+      
+      // Safe JSON parsing for login response
+      try {
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          return await response.json();
+        } else {
+          throw new Error('Server returned non-JSON response');
+        }
+      } catch (error) {
+        console.error('Login response parsing error:', error);
+        throw new Error('Invalid server response during login');
+      }
     },
     onMutate: () => {
       setState(prev => ({
@@ -94,9 +124,14 @@ export function useAdminAuth() {
     queryClient.clear();
   };
 
+  const clearSession = () => {
+    logout();
+  };
+
   return {
     ...state,
     login,
     logout,
+    clearSession,
   };
 }
