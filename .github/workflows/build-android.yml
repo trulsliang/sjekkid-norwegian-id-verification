@@ -34,9 +34,15 @@ jobs:
       run: npm install
       
     - name: Build web assets
-      run: npm run build
-      env:
-        VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      run: |
+        # Replace the hardcoded placeholder with the actual API URL
+        if [ -n "${{ secrets.VITE_API_URL }}" ]; then
+          sed -i "s|REPLACE_WITH_DEPLOYED_URL|${{ secrets.VITE_API_URL }}|g" client/src/config/api-hardcoded.ts
+          echo "Replaced API URL with: ${{ secrets.VITE_API_URL }}"
+        else
+          echo "Warning: VITE_API_URL secret not set"
+        fi
+        npm run build
       
     - name: Copy to Android
       run: npx cap copy android
