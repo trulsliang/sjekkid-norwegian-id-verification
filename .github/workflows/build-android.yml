@@ -35,6 +35,8 @@ jobs:
       
     - name: Build web assets
       run: npm run build
+      env:
+        VITE_API_URL: ${{ secrets.VITE_API_URL }}
       
     - name: Copy to Android
       run: npx cap copy android
@@ -45,7 +47,9 @@ jobs:
         sed -i 's/JavaVersion.VERSION_21/JavaVersion.VERSION_17/g' node_modules/@capacitor/android/capacitor/build.gradle
         # Fix Cordova plugins Java 21 to Java 17
         sed -i 's/JavaVersion.VERSION_21/JavaVersion.VERSION_17/g' android/capacitor-cordova-android-plugins/build.gradle
-        echo "Patched both Capacitor and Cordova plugins to use Java 17"
+        # Fix app-level Capacitor build Java 21 to Java 17
+        sed -i 's/JavaVersion.VERSION_21/JavaVersion.VERSION_17/g' android/app/capacitor.build.gradle
+        echo "Patched all Capacitor modules to use Java 17"
       
     - name: Make gradlew executable
       run: chmod +x android/gradlew
