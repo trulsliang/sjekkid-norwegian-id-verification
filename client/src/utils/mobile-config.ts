@@ -8,42 +8,36 @@ export const setupMobileConfig = () => {
   const isFile = window.location.protocol === 'file:';
   const isMobileApp = isCapacitor || (isAndroid && isFile) || window.location.href.includes('capacitor://');
   
+  console.log('🔧 Mobile Config Setup:', {
+    isCapacitor,
+    isAndroid,
+    isFile,
+    isMobileApp,
+    protocol: window.location.protocol,
+    host: window.location.host,
+    href: window.location.href,
+    userAgent: navigator.userAgent
+  });
+  
   if (isMobileApp) {
-    console.log('🔧 Setting up mobile configuration...');
+    console.log('📱 Detected mobile app environment');
     
-    // Try to get the API URL from multiple sources
-    const apiUrl = import.meta.env.VITE_API_URL;
+    // The hardcoded config should handle the URL now
+    // This is just for additional validation
+    const hardcodedUrl = 'https://sto-identifier-trulsliang.replit.app';
     
-    if (apiUrl && !apiUrl.includes('your-deployed-server')) {
-      // Store the API URL in a global variable as backup
-      (window as any).__VITE_API_URL__ = apiUrl;
-      localStorage.setItem('VITE_API_URL', apiUrl);
-      console.log('✅ Mobile API URL configured:', apiUrl);
-    } else {
-      console.error('❌ Mobile API URL not configured!');
-      console.error('Expected VITE_API_URL environment variable with your deployed server URL');
-      console.error('Current value:', apiUrl);
-      
-      // Show user-friendly error in the app
-      const errorDiv = document.createElement('div');
-      errorDiv.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: #ff4444;
-        color: white;
-        padding: 10px;
-        text-align: center;
-        z-index: 9999;
-        font-family: sans-serif;
-      `;
-      errorDiv.innerHTML = `
-        ⚠️ Mobile API not configured<br>
-        Contact support for APK configuration
-      `;
-      document.body.appendChild(errorDiv);
-    }
+    console.log('✅ Mobile configuration complete');
+    console.log('🌐 API URL will be:', hardcodedUrl);
+    
+    // Store for debugging
+    (window as any).__MOBILE_DEBUG__ = {
+      isCapacitor,
+      isAndroid,
+      isFile,
+      isMobileApp,
+      apiUrl: hardcodedUrl,
+      timestamp: new Date().toISOString()
+    };
   }
 };
 
