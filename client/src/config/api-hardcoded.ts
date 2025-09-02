@@ -28,8 +28,13 @@ export const getHardcodedApiUrl = (): string => {
     
     console.log('Using mobile API URL:', apiUrl);
     
-    // Validate that we have a proper URL
-    if (!apiUrl || apiUrl.includes('REPLACE_WITH_DEPLOYED_URL') || apiUrl.includes('your-deployed-server')) {
+    // Validate that we have a proper URL (check for actual placeholder values)
+    const isValidUrl = apiUrl && 
+                      !apiUrl.includes('REPLACE_WITH_DEPLOYED_URL') && 
+                      !apiUrl.includes('your-deployed-server') &&
+                      apiUrl.startsWith('http');
+    
+    if (!isValidUrl) {
       console.error('❌ Mobile API URL not properly configured!');
       console.error('Current API URL:', apiUrl);
       
