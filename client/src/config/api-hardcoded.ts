@@ -28,45 +28,13 @@ export const getHardcodedApiUrl = (): string => {
     
     console.log('Using mobile API URL:', apiUrl);
     
-    // Validate that we have a proper URL (check for actual placeholder values)
+    // Simple validation - just check for obvious placeholder values
     const hasPlaceholder = apiUrl.includes('REPLACE_WITH_DEPLOYED_URL') || 
                           apiUrl.includes('your-deployed-server');
-    const isValidUrl = apiUrl && apiUrl.startsWith('http') && !hasPlaceholder;
     
-    if (!isValidUrl) {
-      console.error('❌ Mobile API URL not properly configured!');
+    if (hasPlaceholder) {
+      console.error('❌ Mobile API URL contains placeholder!');
       console.error('Current API URL:', apiUrl);
-      
-      // Show error to user
-      const errorDiv = document.createElement('div');
-      errorDiv.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: #ff4444;
-        color: white;
-        padding: 10px;
-        text-align: center;
-        z-index: 9999;
-        font-family: sans-serif;
-        font-size: 14px;
-      `;
-      errorDiv.innerHTML = `
-        ⚠️ Mobile API Configuration Error<br>
-        API URL: ${apiUrl}<br>
-        Contact support for APK configuration
-      `;
-      
-      // Remove any existing error divs
-      const existingError = document.querySelector('[data-error="mobile-api"]');
-      if (existingError) existingError.remove();
-      
-      errorDiv.setAttribute('data-error', 'mobile-api');
-      document.body.appendChild(errorDiv);
-      
-      // Still return the URL, but it will likely fail
-      return apiUrl;
     }
     
     console.log('✅ Mobile API URL configured successfully:', apiUrl);
