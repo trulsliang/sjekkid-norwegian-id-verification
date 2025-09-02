@@ -670,25 +670,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.patch("/api/admin/organizations/:id/activate", requireAdmin, async (req: any, res) => {
-    try {
-      if (req.adminUser.role !== 'admin') {
-        return res.status(403).json({ message: "Admin access required" });
-      }
-      
-      const id = parseInt(req.params.id);
-      const organization = await storage.updateOrganization(id, { isActive: true });
-      
-      if (!organization) {
-        return res.status(404).json({ message: "Organization not found" });
-      }
-      
-      res.json(organization);
-      
-    } catch (error) {
-      res.status(500).json({ message: "Failed to activate organization" });
-    }
-  });
+  
 
   // Users Management
   app.get("/api/admin/users", requireAdmin, async (req: any, res) => {

@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
@@ -37,33 +38,14 @@ app.use((req, res, next) => {
 });
 
 // Enhanced CORS for mobile APK support
-app.use((req, res, next) => {
-  // Allow requests from mobile apps and development
-  const allowedOrigins = [
-    'https://localhost',
-    'http://localhost',
-    'capacitor://localhost',
-    'http://localhost:5173',
-    'https://localhost:5173'
-  ];
-
-  const origin = req.headers.origin;
-  if (origin && allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true');
-
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
-    return;
-  }
-
-  next();
-});
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production'
+    ? ['https://sto-identifier-trulsliang.replit.app']
+    : ['http://localhost:5173', 'https://localhost:5173', 'http://127.0.0.1:5173'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-session-id', 'x-auth-token']
+}));
 
 
 (async () => {
