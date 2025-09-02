@@ -36,17 +36,44 @@ app.use((req, res, next) => {
   next();
 });
 
+// Enhanced CORS for mobile APK support
+app.use((req, res, next) => {
+  // Allow requests from mobile apps and development
+  const allowedOrigins = [
+    'https://localhost',
+    'http://localhost',
+    'capacitor://localhost',
+    'http://localhost:5173',
+    'https://localhost:5173'
+  ];
+
+  const origin = req.headers.origin;
+  if (origin && allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+    return;
+  }
+
+  next();
+});
+
+
 (async () => {
   try {
     const server = await registerRoutes(app);
 
-    app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-      const status = err.status || err.statusCode || 500;
-      const message = err.message || "Internal Server Error";
-
-      console.error("Server error:", err);
-      res.status(status).json({ message });
-      // Remove the throw statement to prevent server crashes
+    // Global error handler
+    app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+      console.error(err.stack);
+      res.status(500).json({ error: 'Something went wrong!' });
     });
 
     // importantly only setup vite in development and after
