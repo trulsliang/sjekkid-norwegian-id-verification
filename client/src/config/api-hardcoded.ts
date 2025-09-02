@@ -26,18 +26,7 @@ export const getHardcodedApiUrl = (): string => {
     // Always use the deployed URL for mobile
     const apiUrl = MOBILE_API_CONFIG.DEFAULT_API_URL;
     
-    console.log('Using mobile API URL:', apiUrl);
-    
-    // Simple validation - just check for obvious placeholder values
-    const hasPlaceholder = apiUrl.includes('REPLACE_WITH_DEPLOYED_URL') || 
-                          apiUrl.includes('your-deployed-server');
-    
-    if (hasPlaceholder) {
-      console.error('❌ Mobile API URL contains placeholder!');
-      console.error('Current API URL:', apiUrl);
-    }
-    
-    console.log('✅ Mobile API URL configured successfully:', apiUrl);
+    console.log('✅ Using mobile API URL:', apiUrl);
     return apiUrl;
   }
   
